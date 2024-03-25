@@ -55,7 +55,7 @@ public class PasswordStore {
    }
 
    public void setCategory(int category) {
-        if (category >= 0 && category <= 3) {
+        if (category >= 0 && category <= 4) {
             this.category = category;
         } else {
             this.category = 0;
@@ -67,11 +67,13 @@ public class PasswordStore {
             case 0:
                 return "Belum terkategori";
             case 1:
-                return "Aplikasi web";
+                return "mobile application";
             case 2:
-                return "Aplikasi mobile";
+                return "web application";
             case 3:
-                return "Akun lainnya";
+                return "desktop application";
+            case 4:
+                return "other account";
             default:
                 return "Belum terkategori";
         }
