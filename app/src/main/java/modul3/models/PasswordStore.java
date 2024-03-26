@@ -8,9 +8,10 @@ public class PasswordStore {
    private double score;
    private int category;
    public static final int UNCATEROGIZED = 0;
-   public static final int CAT_WEBAPP = 1;
-   public static final int CAT_MOBILEAPP = 2;
-   public static final int CAT_OTHER = 3;
+   public static final int CAT_MOBILEAPP = 1;
+   public static final int CAT_WEBAPP = 2;
+   public static final int CAT_DESKTOPAPP = 3;
+   public static final int CAT_OTHER = 4;
 
    public PasswordStore(String name, String username, String plainPass, int category) {
     try {

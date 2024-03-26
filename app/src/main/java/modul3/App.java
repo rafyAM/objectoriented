@@ -13,7 +13,7 @@ public class App {
     public static void main(String[] args) {
        try {
             PasswordStore pass1 = new PasswordStore("AkunBerbahaya", "123423", "RahasiaDapur");
-            pass1.setCategory(PasswordStore.CAT_WEBAPP);
+            pass1.setCategory(PasswordStore.CAT_MOBILEAPP);
             System.out.println(pass1);
             System.out.println("USERNAME: " + pass1.username + " PASSWORD: " + pass1.getPassword());
         } catch (Exception e) {
