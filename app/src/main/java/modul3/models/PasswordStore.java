@@ -1,62 +1,94 @@
 package modul3.models;
 
+import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import modul3.Encryptor;
 
 public class PasswordStore {
-   public String name, username;
-   private String password, hashkey;
-   private double score;
-   private int category;
-   public static final int UNCATEROGIZED = 0;
-   public static final int CAT_MOBILEAPP = 1;
-   public static final int CAT_WEBAPP = 2;
-   public static final int CAT_DESKTOPAPP = 3;
-   public static final int CAT_OTHER = 4;
+    public String name, username;
+    private String password, hashkey;
+    private double score;
+    private int category;
+    public static final int UNCATEGORIZED = 0;
+    public static final int CAT_WEBAPP = 1;
+    public static final int CAT_MOBILEAPP = 2;
+    public static final int CAT_OTHER = 3;
 
-   public PasswordStore(String name, String username, String plainPass, int category) {
-    try {
-        this.hashkey = Encryptor.generateKey();
+    public static final String[] CATEGORIES = { "Belum terkategori", "Aplikasi Web", "Aplikasi Mobile",
+            "Akun Lainnya" };
+
+    public PasswordStore(String name, String username, String plainPass) {
+        this(name, username, plainPass, UNCATEGORIZED);
+    }
+
+    public PasswordStore(String name, String username, String plainPass, int category) {
+        try {
+            this.hashkey = Encryptor.generateKey();
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(PasswordStore.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.name = name;
         this.username = username;
-        setPassword(plainPass);
-        setCategory(category);
-    } catch (Exception e) {
-        // TODO: handle exception
+        this.setPassword(plainPass);
+        this.setCategory(category);
     }
-   }
 
-   public PasswordStore(String name, String username, String plainPass) {
-    try {
-        this.hashkey = Encryptor.generateKey();
+    public PasswordStore(String name, String username, String encPass,
+            int category, String hashKey, double score) {
         this.name = name;
         this.username = username;
-        setPassword(plainPass);
-        setCategory(UNCATEROGIZED);
-    } catch (Exception e) {
-        e.printStackTrace();
+        this.password = encPass;
+        this.category = category;
+        this.hashkey = hashKey;
+        this.score = score;
     }
-   }
 
-   public void setPassword(String plainPass) {
-    try {
-        this.password = Encryptor.encrypt(plainPass, this.hashkey);
-        calculateScore(plainPass);
-    } catch (Exception e) {
-        e.printStackTrace();
+    public void setEncryptedPass(String encryptedPass, String hashkey) {
+        this.password = encryptedPass;
+        this.hashkey = hashkey;
     }
-   }
 
-   public String getPassword() {
-    try {
-        return Encryptor.decrypt(this.password, this.hashkey);
-    } catch (Exception e) {
-       e.printStackTrace();
-       return null;
+    public void setHashkey(String hashkey) {
+        try {
+            this.hashkey = hashkey;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
-   }
 
-   public void setCategory(int category) {
-        if (category >= 0 && category <= 4) {
+    public String getHashkey() {
+        return this.hashkey;
+    }
+
+    public void setPassword(String plainPass) {
+        String encryptedPass;
+        try {
+            encryptedPass = Encryptor.encrypt(plainPass, this.hashkey);
+            this.password = encryptedPass;
+            this.calculateScore(plainPass);
+        } catch (Exception ex) {
+            Logger.getLogger(PasswordStore.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public String getEncPassword() {
+        return this.password;
+    }
+
+    public String getPassword() {
+        try {
+            return Encryptor.decrypt(this.password, this.hashkey);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public void setCategory(int category) {
+        if (category >= 0 && category <= 3) {
             this.category = category;
         } else {
             this.category = 0;
@@ -64,33 +96,29 @@ public class PasswordStore {
     }
 
     public String getCategory() {
-        switch (this.category) {
-            case 0:
-                return "Belum terkategori";
-            case 1:
-                return "mobile application";
-            case 2:
-                return "web application";
-            case 3:
-                return "desktop application";
-            case 4:
-                return "other account";
-            default:
-                return "Belum terkategori";
-        }
+        return CATEGORIES[this.category];
+    }
+
+    public int getCategoryCode() {
+        return this.category;
+    }
+
+    public double getScore() {
+        return this.score;
     }
 
     private void calculateScore(String plainPass) {
-        if (plainPass.length() > 15) {
+        double len = plainPass.length();
+        if (len > 15) {
             this.score = 10;
         } else {
-            this.score = (plainPass.length() / 15.0) * 10;
+            this.score = (len / 15) * 10;
         }
     }
 
     @Override
     public String toString() {
-        return "Username: " + this.username + "\nPassword (encrypted): " + this.password + "\nHashkey: " + this.hashkey
-                + "\nKategori: " + this.getCategory() + "\nScore: " + this.score;
+        return this.username + " - " + this.password + " - " + this.hashkey + " - "
+                + String.format("%,.2f", this.score);
     }
 }
