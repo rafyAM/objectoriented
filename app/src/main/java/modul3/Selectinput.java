@@ -1,6 +1,8 @@
 package modul3;
 
-public class Selectinput {
+import modul3.Drawable;
+
+public class Selectinput implements Drawable {
     private String label;
     private int width;
     private String[] selection;

@@ -1,8 +1,6 @@
 package modul3;
 
-import org.checkerframework.checker.units.qual.min;
-
-public class Label {
+public class Label implements Drawable {
     private int width;
     public String text;
 

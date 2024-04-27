@@ -1,23 +1,31 @@
 package modul3;
 
+import java.util.Scanner;
+
+import modul3.Input;
 import modul3.Selectinput;
 import modul3.Hline;
-import modul3.models.DataPassword;
+import modul3.Label;
+import modul3.Space;
 import modul3.models.PasswordStore;
+import modul3.models.DataPassword;
 
-public class Inputpage {
-    public String title;
-    public int width;
-    private final Hline hline;
-    private final Space space;
-    private final Label label;
+public class Inputpage extends Basepage {
+    Input inputName = new Input("Judul Password");
+    Input inputUsername = new Input("Username");
+    Input inputPass = new Input("Password");
+    Selectinput inpCategory;
+    PasswordStore pass;
 
-    public Inputpage(String title, int width) {
-        this.title = title;
-        this.width = width;
-        this.hline = new Hline(width);
-        this.space = new Space(width);
-        this.label = new Label(width, title.toUpperCase());
+    public Inputpage(int width) {
+        super("Inputan Password", width);
+        this.inpCategory = new Selectinput("Kategori", this.width, PasswordStore.CATEGORIES);
+        this.components.add(this.inputName);
+        this.components.add(this.inputUsername);
+        this.components.add(this.inputPass);
+        this.components.add(this.inpCategory);
+        this.components.add(new Label(this.width, "----- -----"));
+        this.components.add(new Label(this.width, "Input password berhasil dibuat"));
     }
 
     public void draw() {
@@ -63,6 +71,6 @@ public class Inputpage {
         new Label(50, "Input Password berhasil dibuat").draw();
         new Space(50).draw();
         new Hline(50).draw();
-        new Mainpage("Main Page", width).draw();
+        new Mainpage(width).draw();
     }
 }

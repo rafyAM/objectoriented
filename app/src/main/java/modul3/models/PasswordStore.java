@@ -1,10 +1,12 @@
 package modul3.models;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import modul3.Encryptor;
+import modul3.Basepage;
 
 public class PasswordStore {
     public String name, username;

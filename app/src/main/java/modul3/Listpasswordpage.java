@@ -3,23 +3,19 @@ package modul3;
 import java.util.ArrayList;
 
 import modul3.Hline;
-import modul3.Mainpage;
+import modul3.Label;
+import modul3.Space;
 import modul3.models.DataPassword;
 import modul3.models.PasswordStore;
+import modul3.Basepage;
+import modul3.Mainpage;
 
-public class Listpasswordpage {
+public class Listpasswordpage extends Basepage {
     public String title;
     public int width;
-    private final Hline hline;
-    private final Space space;
-    private final Label label;
 
-    public Listpasswordpage(String title, int width) {
-        this.title = title;
-        this.width = width;
-        this.hline = new Hline(width);
-        this.space = new Space(width);
-        this.label = new Label(width, title.toUpperCase());
+    public Listpasswordpage(int width) {
+        super("List Password", width);
     }
 
     public void draw() {
@@ -70,6 +66,6 @@ public class Listpasswordpage {
     public void drawFooter() {
         this.space.draw();
         this.hline.draw();
-        new Mainpage("Main Page", width).draw();
+        new Mainpage(width).draw();
     }
 }

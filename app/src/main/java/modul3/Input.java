@@ -2,7 +2,9 @@ package modul3;
 
 import java.util.Scanner;
 
-public class Input {
+import modul3.Drawable;
+
+public class Input implements Drawable {
     private String label;
     private Scanner input;
     private String value;

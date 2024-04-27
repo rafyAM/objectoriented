@@ -12,8 +12,9 @@ public class App {
 
     public static void main(String[] args) {
        try {
-            new Mainpage("Main Page", 50).draw();
             DataPassword.loadCSVData();
+            Mainpage mainPage = new Mainpage(80);
+            mainPage.draw();
 
             DataPassword.saveCSVData();
             // PasswordStore pass1 = new PasswordStore("AkunBerbahaya", "123423", "RahasiaDapur");

@@ -1,6 +1,6 @@
 package modul3;
 
-public class Hline {
+public class Hline implements Drawable {
     private int width;
 
     public Hline(int width) {
