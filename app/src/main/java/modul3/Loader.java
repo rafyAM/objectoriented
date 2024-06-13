@@ -10,7 +10,6 @@ import org.apache.commons.csv.CSVRecord;
 
 import modul3.models.Mahasiswa;
 
-
 public class Loader {
     public static ArrayList<Mahasiswa> csvMhsLoad() {
         String path = "app/src/main/java/modul3/data-mahasiswa.csv";

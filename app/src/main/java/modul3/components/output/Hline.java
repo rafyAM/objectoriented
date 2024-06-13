@@ -1,18 +1,18 @@
-package modul3;
+package modul3.components.output;
 
-public class Space implements Drawable {
+public class Hline implements Drawable {
     private int width;
 
-    public Space(int width) {
+    public Hline(int width) {
         this.width = width;
     }
 
     public void draw() {
         StringBuilder line = new StringBuilder();
         for (int i = 0; i < width; i++) {
-            line.append(" ");
+            line.append("=");
         }
 
-        System.out.println("|" + line + "|");
+        System.out.println("+" + line + "+");
     }
 }

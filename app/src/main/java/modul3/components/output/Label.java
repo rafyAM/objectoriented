@@ -1,4 +1,4 @@
-package modul3;
+package modul3.components.output;
 
 public class Label implements Drawable {
     private int width;

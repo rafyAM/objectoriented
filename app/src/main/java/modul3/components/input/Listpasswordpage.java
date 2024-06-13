@@ -1,14 +1,14 @@
-package modul3;
+package modul3.components.input;
 
 import java.util.ArrayList;
 
-import modul3.Hline;
-import modul3.Label;
-import modul3.Space;
+import modul3.components.output.Hline;
+import modul3.components.output.Label;
+import modul3.components.output.Space;
 import modul3.models.DataPassword;
 import modul3.models.PasswordStore;
-import modul3.Basepage;
-import modul3.Mainpage;
+import modul3.pages.Basepage;
+import modul3.pages.Mainpage;
 
 public class Listpasswordpage extends Basepage {
     public String title;

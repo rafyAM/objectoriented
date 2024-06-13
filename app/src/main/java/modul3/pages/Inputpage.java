@@ -1,12 +1,12 @@
-package modul3;
+package modul3.pages;
 
 import java.util.Scanner;
 
-import modul3.Input;
-import modul3.Selectinput;
-import modul3.Hline;
-import modul3.Label;
-import modul3.Space;
+import modul3.components.input.Input;
+import modul3.components.input.Selectinput;
+import modul3.components.output.Hline;
+import modul3.components.output.Label;
+import modul3.components.output.Space;
 import modul3.models.PasswordStore;
 import modul3.models.DataPassword;
 

@@ -1,8 +1,8 @@
-package modul3;
+package modul3.components.input;
 
 import java.util.Scanner;
 
-import modul3.Drawable;
+import modul3.components.output.Drawable;
 
 public class Input implements Drawable {
     private String label;

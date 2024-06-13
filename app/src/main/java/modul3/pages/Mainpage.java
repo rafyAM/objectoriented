@@ -1,11 +1,11 @@
-package modul3;
+package modul3.pages;
 
-import modul3.Listpasswordpage;
-import modul3.Selectinput;
-import modul3.Drawable;
-import modul3.Hline;
-import modul3.Label;
-import modul3.Space;
+import modul3.components.input.Listpasswordpage;
+import modul3.components.input.Selectinput;
+import modul3.components.output.Drawable;
+import modul3.components.output.Hline;
+import modul3.components.output.Label;
+import modul3.components.output.Space;
 import modul3.models.DataPassword;
 
 public class Mainpage extends Basepage {

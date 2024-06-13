@@ -64,4 +64,3 @@ public class MahasiswaApp {
         cumLaude.forEach(System.out::println);
     }
 }
-

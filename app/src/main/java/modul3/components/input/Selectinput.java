@@ -1,6 +1,6 @@
-package modul3;
+package modul3.components.input;
 
-import modul3.Drawable;
+import modul3.components.output.Drawable;
 
 public class Selectinput implements Drawable {
     private String label;

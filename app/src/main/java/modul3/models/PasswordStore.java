@@ -6,7 +6,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import modul3.Encryptor;
-import modul3.Basepage;
+import modul3.pages.Basepage;
 
 public class PasswordStore {
     public String name, username;
